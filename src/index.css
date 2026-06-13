@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer utilities {
+  /* Dynamic glowing glass styles */
+  .glass-panel {
+    background-color: var(--glass-bg, rgba(255, 255, 255, 0.45));
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.25));
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .dark .glass-panel {
+    --glass-bg: rgba(17, 24, 39, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+  }
+
+  /* Core scanning lines and grids */
+  .radar-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .radar-sweep::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(180deg, rgba(45, 212, 191, 0.9), rgba(45, 212, 191, 0));
+    box-shadow: 0 0 15px 3px rgba(45, 212, 191, 0.7);
+    animation: radar-sweep-anim 2.5s infinite linear;
+  }
+
+  @keyframes radar-sweep-anim {
+    0% {
+      top: 0%;
+      opacity: 0.1;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      top: 100%;
+      opacity: 0.1;
+    }
+  }
+
+  /* Micro dot matrix medical grids */
+  .medical-grid {
+    background-size: 24px 24px;
+    background-image: 
+      radial-gradient(circle, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  }
+
+  .dark .medical-grid {
+    background-size: 24px 24px;
+    background-image: 
+      radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+}

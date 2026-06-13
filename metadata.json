@@ -1,0 +1,6 @@
+{
+  "name": "Medical Image Analysis using AI",
+  "description": "Analyze medical images (X-rays, MRI, CT scans) using AI to detect potential conditions and provide medical insights, including dashboard history and user management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
